@@ -15,15 +15,31 @@ namespace tutor_tp5
 		// Deklarasi konstruktor dengan title
 		public SayaTubeVideo(string title)
 		{
-			this.title = title;
+			SetTitle(title);
 			this.id = new Random().Next(10000, 99999);
 			this.playCount = 0;
+		}
+
+		public void SetTitle(string title)
+		{
+			if (title == null) return;
+			if (title.Length > 100) return;
+
+			this.title = title;
 		}
 
 		// Tambahkan playCount dengan parameter add
 		public void IncreasePlayCount(int add)
 		{
-			this.playCount += add;
+			if (add > 10000000) return;
+
+			try
+			{
+				this.playCount = checked(this.playCount + add);
+			}catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+			}
 		}
 
 		// Tampilkan informasi video

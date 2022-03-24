@@ -14,6 +14,20 @@ namespace tutor_tp5
 			SayaTubeVideo video = new SayaTubeVideo("Tutorial Design By Contract – Ahmad Fathan Hanif");
 			video.IncreasePlayCount(7230);
 			video.PrintVideoDetails();
+
+			// Test title video di set null
+			video.SetTitle(null);
+
+			// Test IncreasePlayCount 10.000.000
+			video.IncreasePlayCount(10000001);
+			video.PrintVideoDetails();
+
+			// Test untuk jika kapasitas variabel melebihi batas
+			for (int i = 0; i < 218; i++)
+			{
+				video.IncreasePlayCount(9999999);
+			}
+			video.PrintVideoDetails();
 		}
 	}
 }
